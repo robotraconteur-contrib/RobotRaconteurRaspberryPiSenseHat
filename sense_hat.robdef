@@ -1,0 +1,31 @@
+service sensors.sensehat
+
+import com.robotraconteur.color
+import com.robotraconteur.geometry
+
+using com.robotraconteur.color.ColorRGBAu
+using com.robotraconteur.geometry.Vector2
+
+stdver 0.9
+
+object SenseHat
+    	
+        wire double Pressure [readonly]
+        wire double Temperature [readonly]
+        wire double Humidity [readonly]
+        wire Vector2 joystick_state [readonly]
+        function void Show_message(string message, ColorRGBAu text_color, ColorRGBAu back_color, double scroll_speed)
+        function void Clear(ColorRGBAu color)
+        function void Show_letter(string letter, ColorRGBAu text_color, ColorRGBAu back_color)
+        function void setf_pixel(int x, int y, ColorRGBAu color)
+        function void setf_pixels(ColorRGBAu[] color_array)
+        function void Set_rotation(double rotation)
+        function void Flip_v()
+        function void Flip_h()
+        function void Start_streaming()
+        function void Stop_streaming()
+        
+        event joystick_move(Vector2 joystick_motion)
+        
+        
+end

@@ -1,0 +1,22 @@
+service sensors.sensehat
+
+stdver 0.9
+
+object Sensehat
+    	
+        wire double pressure [readonly]
+        wire double temperature [readonly]
+        wire double humidity [readonly]
+        function void Show_message(string message, int[] text_color, int[] back_color, double scroll_speed)
+        function void Clear(int[] color)
+        function void Show_letter(string letter, int[] text_color, int[] back_color)
+        function void Set_pixel(int x, int y, int[] color)
+        function void Set_pixels(int[][] color_array)
+        function void Set_rotation(double rotation)
+        function void Flip_v()
+        function void Flip_h()
+        function void Start_streaming()
+        function void Stop_streaming()
+        
+        
+end
