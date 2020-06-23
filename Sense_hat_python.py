@@ -4,6 +4,7 @@ import threading
 from general_robotics_toolbox import *
 import numpy
 import traceback
+import argparse
 
 RRN=RR.RobotRaconteurNode.s
 
@@ -41,7 +42,7 @@ class Sense_hat_IMU(object):
 class Sense_hat(object):
     def __init__(self,sense_hat,imu_interface):
         self.Sense_hat=sense_hat
-        self.Sense_hat.stick.direction_any=joystick_event
+        self.Sense_hat.stick.direction_any=self.joystick_event
         self.IMU_interface=imu_interface
         self.Bump=RR.EventHook()
         self.sensor_streaming=False
@@ -123,7 +124,7 @@ class Sense_hat(object):
         
     def Start_streaming(self):
         with self._lock:
-            if(!self.sensor_streaming):
+            if(not self.sensor_streaming):
                 self.sensor_streaming=True
                 t=threading.Thread(target=self._recv_thread)
                 t.start()
@@ -193,7 +194,6 @@ class Sense_hat(object):
 def main():
     parser = argparse.ArgumentParser(description="Example Robot Raconteur iRobot Create service")    
     parser.add_argument("--nodename",type=str,default="sense_hat.SenseHat",help="The NodeName to use")
-    parser.add_argument("--serialport",type=str,default=serial_port_name,help="The serial port to use")
     parser.add_argument("--tcp-port",type=int,default=2354,help="The listen TCP port")
     parser.add_argument("--wait-signal",action='store_const',const=True,default=False)
     args = parser.parse_args()
@@ -202,7 +202,7 @@ def main():
     sensor_hat_service=Sense_hat(sense,imu_service)
 
     
-    with RR.ServerNodeSetup(nodename,port) as node_setup:
+    with RR.ServerNodeSetup(args.nodename,args.tcp_port) as node_setup:
         
         RRN.RegisterServiceTypeFromFile("com.robotraconteur.geometry")
         RRN.RegisterServiceTypeFromFile("com.robotraconteur.color")
