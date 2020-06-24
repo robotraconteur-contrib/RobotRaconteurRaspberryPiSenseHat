@@ -1,6 +1,6 @@
-#Set up instructions for Raspberry Pi Robot Raconteur Sense Hat 
+# Set up instructions for Raspberry Pi Robot Raconteur Sense Hat 
 
-##Set up raspi-config
+## Set up raspi-config
 wget https://archive.raspberrypi.org/debian/pool/main/r/raspi-config/raspi-config_20200601_all.deb -P /tmp
 apt-get install libnewt0.52 whiptail parted triggerhappy lua5.1 alsa-utils -y
 apt-get install -fy
@@ -15,7 +15,7 @@ sudo raspi-config
 select option 5: Interfacing Options
 Then Enable I2C and exit
 
-##Install Necessary Libraries
+## Install Necessary Libraries
 Clone RTIMULib:
 git clone https://github.com/RPi-Distro/RTIMULib/ RTIMU
 cd RTIMU/Linux/python
