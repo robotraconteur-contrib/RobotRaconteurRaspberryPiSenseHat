@@ -54,8 +54,8 @@ class Sense_hat(object):
         
     def Show_message(self,message,text_color,back_color,scroll_speed=1.0):
         
-        text_color_tuple=(text_color['r'],text_color['g'],text_color['b'])
-        back_color_tuple=(back_color['r'],back_color['g'],back_color['b'])
+        text_color_tuple=(text_color['r'][0],text_color['g'][0],text_color['b'][0])
+        back_color_tuple=(back_color['r'][0],back_color['g'][0],back_color['b'][0])
         try:
             self.Sense_hat.show_message(message,text_color_tuple,back_color_tuple,scroll_speed)
         except:
@@ -63,7 +63,7 @@ class Sense_hat(object):
         
     
     def Clear(self, color):
-        color_tuple=(color['r'],color['g'],color['b'])
+        color_tuple=(color['r'][0],color['g'][0],color['b'][0])
         try:
             self.Sense_hat.clear(color_tuple)
         except:
@@ -71,8 +71,8 @@ class Sense_hat(object):
             
             
     def Show_letter(self, letter,text_color,back_color):
-        text_color_tuple=(text_color['r'],text_color['g'],text_color['b'])
-        back_color_tuple=(back_color['r'],back_color['g'],back_color['b'])
+        text_color_tuple=(text_color['r'][0],text_color['g'][0],text_color['b'][0])
+        back_color_tuple=(back_color['r'][0],back_color['g'][0],back_color['b'][0])
         try:
             self.Sense_hat.show_letter(letter,text_color_tuple,back_color_tuple)
         
@@ -83,7 +83,7 @@ class Sense_hat(object):
             
     def setf_pixel(self, x, y, color):
         
-        color_tuple=(color['r'],color['g'],color['b'])
+        color_tuple=(color['r'][0],color['g'][0],color['b'][0])
         try:
             self.Sense_hat.set_pixel(x,y,color_tuple)
         except:
@@ -96,7 +96,7 @@ class Sense_hat(object):
         try:
             
             for item in color_array:
-                color_array_item_tuple=(item['r'],item['g'],item['b'])
+                color_array_item_tuple=(item['r'][0],item['g'][0],item['b'][0])
                 color_array_tuple.append(color_array_item_tuple)
                 
                 
@@ -151,11 +151,11 @@ class Sense_hat(object):
     def _Read_Sensors(self):
         
         pressure=self.Sense_hat.get_pressure()
-        self.pressure.OutValue=pressure
+        self.Pressure.OutValue=pressure
         temperature=self.Sense_hat.get_temperature()
-        self.temperature.OutValue=temperature
+        self.Temperature.OutValue=temperature
         humidity=self.Sense_hat.get_humidity()
-        self.humidity.OutValue=humidity
+        self.Humidity.OutValue=humidity
         self.IMU_interface.send_data()
     
     def _read_joystick(self):
