@@ -1,4 +1,4 @@
-from sense_hat import SenseHat
+from sense_emu import SenseHat
 import RobotRaconteur as RR
 import threading
 from general_robotics_toolbox import *
