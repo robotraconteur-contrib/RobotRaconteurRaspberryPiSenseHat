@@ -36,6 +36,12 @@ class Sense_hat_IMU(object):
         vector3[0]['y']=acceleration['y']
         vector3[0]['z']=acceleration['z']
         state.linear_acceleration=vector3
+        angular_velocity=self.Sense_hat.get_gyroscope_raw()
+        vector3=numpy.zeros((1,),dtype=vector3type)
+        vector3[0]['x']=angular_velocity['x']
+        vector3[0]['y']=angular_velocity['y']
+        vector3[0]['z']=angular_velocity['z']
+        state.angular_velocity=vector3	
         self.imu_state.OutValue=state
         
         
