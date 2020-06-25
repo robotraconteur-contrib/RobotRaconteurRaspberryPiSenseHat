@@ -9,7 +9,9 @@ sudo apt-get install libnewt0.52 whiptail parted triggerhappy lua5.1 alsa-utils 
 sudo apt-get install -fy
 
 dpkg -i /tmp/raspi-config_20200601_all.deb
+
 or
+
 sudo dpkg -i raspi-config_20200601_all.deb
 
 Then Run:
