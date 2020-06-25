@@ -1,15 +1,16 @@
 # Set up instructions for Raspberry Pi Robot Raconteur Sense Hat 
 
 ## Set up raspi-config
+sudo apt install build-essential
 wget https://archive.raspberrypi.org/debian/pool/main/r/raspi-config/raspi-config_20200601_all.deb -P /tmp
 
-apt-get install libnewt0.52 whiptail parted triggerhappy lua5.1 alsa-utils -y
+sudo apt-get install libnewt0.52 whiptail parted triggerhappy lua5.1 alsa-utils -y
 
-apt-get install -fy
+sudo apt-get install -fy
 
 dpkg -i /tmp/raspi-config_20200601_all.deb
 or
-dpkg -i raspi-config_20200601_all.deb
+sudo dpkg -i raspi-config_20200601_all.deb
 
 Then Run:
 
