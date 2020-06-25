@@ -41,3 +41,9 @@ sudo apt install libopenjp2-7
 ### Install sense-hat:
 
 sudo apt install sense-hat
+
+## Install Raspberry Pi Sense Hat Emulator
+
+sudo add-apt-repository ppa://waveform/ppa
+sudo apt-get update
+sudo apt-get install python-sense-emu python3-sense-emu sense-emu-tools
