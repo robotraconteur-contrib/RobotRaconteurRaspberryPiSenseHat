@@ -25,23 +25,23 @@ def setf_pixels_test(sense_hat):
 def clear_test(sense_hat):
     colorRGB=RRN.GetNamedArrayDType("com.robotraconteur.color.ColorRGBAu",sense_hat)
     vector2=numpy.zeros((1,),dtype=colorRGB)
-    vector2[i]['r']=0
-    vector2[i]['g']=0
-    vector2[i]['b']=0
-    vector2[i]['a']=0
-    sense_hat.clear(vector2)
+    vector2[0]['r']=0
+    vector2[0]['g']=0
+    vector2[0]['b']=0
+    vector2[0]['a']=0
+    sense_hat.Clear(vector2)
     
 def setf_pixel_test(sense_hat):
     colorRGB=RRN.GetNamedArrayDType("com.robotraconteur.color.ColorRGBAu",sense_hat)
     vector2=numpy.zeros((1,),dtype=colorRGB)
-    vector2[i]['r']=180
-    vector2[i]['g']=180
-    vector2[i]['b']=180
-    vector2[i]['a']=0
+    vector2[0]['r']=180
+    vector2[0]['g']=180
+    vector2[0]['b']=180
+    vector2[0]['a']=0
     sense_hat.setf_pixel(4,4,vector2)
     
 def set_rotation_test(sense_hat):
-    sense_hat.setf_rotation(40)
+    sense_hat.setf_rotation(90)
 
 def flip_v_test(sense_hat):
     sense_hat.Flip_v()
@@ -52,31 +52,31 @@ def flip_h_test(sense_hat):
 def show_letter_test(sense_hat):
     colorRGB=RRN.GetNamedArrayDType("com.robotraconteur.color.ColorRGBAu",sense_hat)
     vector2=numpy.zeros((1,),dtype=colorRGB)
-    vector2[i]['r']=255
-    vector2[i]['g']=255
-    vector2[i]['b']=255
-    vector2[i]['a']=0
+    vector2[0]['r']=255
+    vector2[0]['g']=70
+    vector2[0]['b']=255
+    vector2[0]['a']=0
     
     vector3=numpy.zeros((1,),dtype=colorRGB)
-    vector3[i]['r']=180
-    vector3[i]['g']=180
-    vector3[i]['b']=180
-    vector3[i]['a']=0
+    vector3[0]['r']=90
+    vector3[0]['g']=90
+    vector3[0]['b']=0
+    vector3[0]['a']=0
     sense_hat.Show_letter("s",vector2,vector3)
     
 def show_message_test(sense_hat):
     colorRGB=RRN.GetNamedArrayDType("com.robotraconteur.color.ColorRGBAu",sense_hat)
     vector2=numpy.zeros((1,),dtype=colorRGB)
-    vector2[i]['r']=255
-    vector2[i]['g']=255
-    vector2[i]['b']=255
-    vector2[i]['a']=0
+    vector2[0]['r']=255
+    vector2[0]['g']=255
+    vector2[0]['b']=255
+    vector2[0]['a']=0
     
     vector3=numpy.zeros((1,),dtype=colorRGB)
-    vector3[i]['r']=180
-    vector3[i]['g']=180
-    vector3[i]['b']=180
-    vector3[i]['a']=0
+    vector3[0]['r']=180
+    vector3[0]['g']=180
+    vector3[0]['b']=180
+    vector3[0]['a']=0
     sense_hat.Show_message("Hello!",vector2,vector3,0.5)
 
 
@@ -104,20 +104,21 @@ def main():
     time.sleep(1)
     setf_pixel_test(c)
     time.sleep(1)
+    print("show letters")
     show_letter_test(c)
-    time.sleep(1)
+    time.sleep(3)
     flip_h_test(c)
     time.sleep(1)
     flip_v_test(c)
     time.sleep(1)
     set_rotation_test(c)
     time.sleep(1)
-    set_message_test(c)
+    show_message_test(c)
     
     
     #c.setf_pixel(1,1,vector2)
     
-    time.sleep(1)
+    s=input("press enter to exit")
 
 def pressure_wire_changed(w,value,time):
     val=w.InValue

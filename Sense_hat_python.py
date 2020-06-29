@@ -69,10 +69,10 @@ class Sense_hat(object):
         
         text_color_tuple=(text_color['r'][0],text_color['g'][0],text_color['b'][0])
         back_color_tuple=(back_color['r'][0],back_color['g'][0],back_color['b'][0])
-        try:
-            self.Sense_hat.show_message(message,text_color_tuple,back_color_tuple,scroll_speed)
-        except:
-            traceback.print_exc()
+        #try:
+        self.Sense_hat.show_message(message,text_colour=text_color_tuple,back_colour=back_color_tuple,scroll_speed=scroll_speed)
+        #except:
+        #    traceback.print_exc()
         
     
     def Clear(self, color):
@@ -110,7 +110,7 @@ class Sense_hat(object):
         try:
             
             for item in color_array:
-                color_array_item_tuple=(item['r'][0],item['g'][0],item['b'][0])
+                color_array_item_tuple=(item['r'],item['g'],item['b'])
                 color_array_tuple.append(color_array_item_tuple)
                 
                 
@@ -125,10 +125,10 @@ class Sense_hat(object):
         
             
     def setf_rotation(self, rotation):
-        if(type(rotation) is int):
-            self.Sense_hat.set_rotation(rotation)
-        else:
-            raise Exception("Cannot set rotation")
+        #if(type(rotation) is int):
+        self.Sense_hat.set_rotation(rotation)
+        #else:
+        #    raise Exception("Cannot set rotation")
     
     def Flip_v(self):
         self.Sense_hat.flip_v()
