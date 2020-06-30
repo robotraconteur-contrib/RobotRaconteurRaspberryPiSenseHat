@@ -139,11 +139,13 @@ class Sense_hat(object):
     def Start_streaming(self):
         with self._lock:
             if(not self.sensor_streaming):
+                print("Starting to stream data")
                 self.sensor_streaming=True
                 t=threading.Thread(target=self._recv_thread)
                 t.start()
             else:
-                raise Exception("Already streaming")
+                #raise Exception("Already streaming")
+                print("Already Streaming")
     
     def Stop_streaming(self):
         with self._lock:
@@ -163,14 +165,17 @@ class Sense_hat(object):
             pass
     
     def _Read_Sensors(self):
-        
-        pressure=self.Sense_hat.get_pressure()
-        self.Pressure.OutValue=pressure
-        temperature=self.Sense_hat.get_temperature()
-        self.Temperature.OutValue=temperature
-        humidity=self.Sense_hat.get_humidity()
-        self.Humidity.OutValue=humidity
-        self.IMU_interface.send_data()
+        with self._lock:
+            #print("reading sensors")
+            pressure=self.Sense_hat.get_pressure()
+            self.Pressure.OutValue=pressure
+            temperature=self.Sense_hat.get_temperature()
+            self.Temperature.OutValue=temperature
+            print(temperature)
+            humidity=self.Sense_hat.get_humidity()
+            print(humidity)
+            self.Humidity.OutValue=humidity
+            #self.IMU_interface.send_data()
     
     def _read_joystick(self):
         while(True):

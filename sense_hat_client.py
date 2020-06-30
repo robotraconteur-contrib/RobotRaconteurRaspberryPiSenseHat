@@ -3,7 +3,7 @@ import time
 import numpy
 
 def joystick(data):
-    print("Joystick event!!!!"+data)
+    print("Joystick event!!!!")
     
 
 def setf_pixels_test(sense_hat):
@@ -79,6 +79,23 @@ def show_message_test(sense_hat):
     vector3[0]['a']=0
     sense_hat.Show_message("Hello!",vector2,vector3,0.5)
 
+def pressure_wire_changed(w,value,time):
+    val=w.InValue
+    print("Pressure=="+val+"/n")
+
+def temperature_wire_changed(w,value,time):
+    val=w.InValue
+    print("Temperature=="+val+"/n")
+    
+def humidity_wire_changed(w,value,time):
+    val=w.InValue
+    print("Humidity==   "+val+"/n")
+    
+def imu_wire_changed(w,value,time):
+    val=w.InValue
+    print("Accelerometer updated/n")
+    print("Angular Velocity== "+val.angular_velocity+"/n")
+
 
 def main():
 
@@ -120,22 +137,7 @@ def main():
     
     s=input("press enter to exit")
 
-def pressure_wire_changed(w,value,time):
-    val=w.InValue
-    print("Pressure=="+val+"/n")
 
-def temperature_wire_changed(w,value,time):
-    val=w.InValue
-    print("Temperature=="+val+"/n")
-    
-def humidity_wire_changed(w,value,time):
-    val=w.InValue
-    print("Humidity==   "+val+"/n")
-    
-def imu_wire_changed(w,value,time):
-    val=w.InValue
-    print("Accelerometer updated/n")
-    print("Angular Velocity== "+val.angular_velocity+"/n")
     
 
 if __name__== '__main__':
