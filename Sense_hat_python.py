@@ -41,7 +41,8 @@ class Sense_hat_IMU(object):
         vector3[0]['x']=angular_velocity['x']
         vector3[0]['y']=angular_velocity['y']
         vector3[0]['z']=angular_velocity['z']
-        state.angular_velocity=vector3	
+        state.angular_velocity=vector3
+        #print("sending accelerometer values")	
         self.imu_state.OutValue=state
         
         
@@ -171,11 +172,11 @@ class Sense_hat(object):
             self.Pressure.OutValue=pressure
             temperature=self.Sense_hat.get_temperature()
             self.Temperature.OutValue=temperature
-            print(temperature)
+            #print(temperature)
             humidity=self.Sense_hat.get_humidity()
-            print(humidity)
+            #print(humidity)
             self.Humidity.OutValue=humidity
-            #self.IMU_interface.send_data()
+            self.IMU_interface.send_data()
     
     def _read_joystick(self):
         while(True):

@@ -81,21 +81,21 @@ def show_message_test(sense_hat):
 
 def pressure_wire_changed(w,value,time):
     val=w.InValue
-    print("Pressure=="+val+"/n")
+    print("Pressure==  %f" %(val))
 
 def temperature_wire_changed(w,value,time):
     val=w.InValue
-    print("Temperature=="+val+"/n")
+    print("Temperature==  %f" %(val))
     
 def humidity_wire_changed(w,value,time):
     val=w.InValue
-    print("Humidity==   "+val+"/n")
+    print("Humidity==  %f" %(val))
     
 def imu_wire_changed(w,value,time):
     val=w.InValue
-    print("Accelerometer updated/n")
-    print("Angular Velocity== "+val.angular_velocity+"/n")
-
+    print("Angular Velocity==  %f, %f, %f" %(val.angular_velocity[0][0],val.angular_velocity[0][1],val.angular_velocity[0][2]))
+    print("Linear Acceleration==  %f, %f, %f" %(val.linear_acceleration[0][0],val.linear_acceleration[0][1],val.linear_acceleration[0][2]))
+    print("Orientation==  %f, %f, %f, %f" %(val.orientation[0][0],val.orientation[0][1],val.orientation[0][2],val.orientation[0][3]))
 
 def main():
 
@@ -103,7 +103,7 @@ def main():
     imu_url='rr+tcp://localhost:2354?service=SensorHatIMU'
     c=RRN.ConnectService(url)
     imu=RRN.ConnectService(imu_url)
-    c.joystick_move+=joystick
+    c.joystick_move+=joystick 
     temp_wire=c.Temperature.Connect()
     temp_wire.WireValueChanged+=temperature_wire_changed
     pressure_wire=c.Pressure.Connect()
@@ -111,9 +111,10 @@ def main():
     hum_wire=c.Humidity.Connect()
     hum_wire.WireValueChanged+=humidity_wire_changed
     imu_wire=imu.imu_state.Connect()
+    imu_wire.WireValueChanged+=imu_wire_changed
     
     c.Start_streaming()
-    
+    '''
     setf_pixels_test(c)
     time.sleep(1)
     
@@ -131,11 +132,11 @@ def main():
     set_rotation_test(c)
     time.sleep(1)
     show_message_test(c)
-    
+    '''
     
     #c.setf_pixel(1,1,vector2)
-    
-    s=input("press enter to exit")
+    time.sleep(3)
+    #s=input("press enter to exit")
 
 
     
